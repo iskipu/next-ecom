@@ -1,7 +1,6 @@
 "use client"
 import React, { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Product } from '../page'
 import StarRating from '../StarRating'
 
 export default function Result() {
