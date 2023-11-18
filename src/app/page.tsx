@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import Link from 'next/link';
 import { json } from 'stream/consumers';
+import StarRating from './StarRating';
 
 export default function Home() {
   const [search, setSearch] = useState('');
@@ -55,7 +56,7 @@ function Card(itm: Product) {
       <p className='text-sm p-1 font-bold'>{itm.product_name}</p>
       <StarRating rating={itm.rating} />
       <Link href={{
-        pathname: `/${itm.product_name}`,
+        pathname: 'product',
         query: { q: JSON.stringify(itm) }
       }
       }> <button className='border-1 p-1 font-bold bg-green-300' >buy</button> </Link>
@@ -63,22 +64,3 @@ function Card(itm: Product) {
     </div>
   )
 }
-
-export const StarRating = ({ rating }: { rating: number }) => {
-  const roundedRating = Math.round(rating);
-
-  return (
-    <div className="flex">
-      {Array.from({ length: 5 }, (_, index) => (
-        <span
-          key={index}
-          className={`text-3xl ${index < roundedRating ? 'text-yellow-500' : 'text-gray-300'}`}
-        >
-          &#9733;
-        </span>
-      ))}
-    </div>
-  );
-};
-
-

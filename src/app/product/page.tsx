@@ -1,9 +1,10 @@
 "use client"
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Product, StarRating } from '../page'
+import { Product } from '../page'
+import StarRating from '../StarRating'
 
-export default function Page() {
+export default function Result() {
 	const searchParams = useSearchParams()
 	const data: Product = JSON.parse(searchParams.get("q") || "{}");
 	return (
